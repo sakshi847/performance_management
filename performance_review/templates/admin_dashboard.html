@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Admin Dashboard</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Review Title</th>
+        <th>Employee</th>
+        <th>Review Date</th>
+        <th>Rating</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for review in reviews %}
+        <tr>
+          <td>{{ review.review_title }}</td>
+          <td>{{ review.employee.name }}</td>
+          <td>{{ review.review_date }}</td>
+          <td>{{ review.rating }}</td>
+          <td>
+            <a href="{% url 'performance_review:edit_review' review_id=review.review_id %}">Edit</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
